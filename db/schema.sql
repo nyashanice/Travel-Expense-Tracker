@@ -23,7 +23,7 @@ CREATE TABLE expenses (
     lodging INT NOT NULL,
     nightlife INT NOT NULL,
     gifts INT NOT NULL,
-    preperation INT NOT NULL,
+    preparation INT NOT NULL,
     -- references id in destinations table
     destination_id INT,
     FOREIGN KEY (destination_id)
