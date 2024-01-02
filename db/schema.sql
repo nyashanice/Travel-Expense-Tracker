@@ -31,5 +31,9 @@ CREATE TABLE expenses (
     category_id INT,
     FOREIGN KEY (category_id)
     REFERENCES categories(id)
+    ON DELETE SET NULL,
+    trip_id INT,
+    FOREIGN KEY (trip_id)
+    REFERENCES trips(id)
     ON DELETE SET NULL
 )
