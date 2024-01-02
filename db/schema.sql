@@ -23,16 +23,13 @@ CREATE TABLE categories (
 );
 
 CREATE TABLE expenses (
-    food_drinks INT NOT NULL,
-    excursions INT NOT NULL,
-    transportation INT NOT NULL,
-    lodging INT NOT NULL,
-    nightlife INT NOT NULL,
-    gifts INT NOT NULL,
-    preparation INT NOT NULL,
-    -- references id in trips table
-    trip_id INT,
-    FOREIGN KEY (trip_id)
-    REFERENCES trips(id)
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    amount DECIMAL(6,2) NOT NULL,
+    description TEXT,
+    date DATE NOT NULL,
+    -- references id in categories table
+    category_id INT,
+    FOREIGN KEY (category_id)
+    REFERENCES categories(id)
     ON DELETE SET NULL
 )
