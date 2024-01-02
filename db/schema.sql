@@ -8,12 +8,18 @@ CREATE DATABASE travel_db;
 
 USE travel_db;
 
-CREATE TABLE destinations (
+CREATE TABLE trips (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    location VARCHAR(100) NOT NULL,
+    destination VARCHAR(100) NOT NULL,
     season VARCHAR(6) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
+);
+
+CREATE TABLE categories (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(1000)
 );
 
 CREATE TABLE expenses (
@@ -24,9 +30,9 @@ CREATE TABLE expenses (
     nightlife INT NOT NULL,
     gifts INT NOT NULL,
     preparation INT NOT NULL,
-    -- references id in destinations table
-    destination_id INT,
-    FOREIGN KEY (destination_id)
-    REFERENCES destinations(id)
+    -- references id in trips table
+    trip_id INT,
+    FOREIGN KEY (trip_id)
+    REFERENCES trips(id)
     ON DELETE SET NULL
 )
