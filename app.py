@@ -7,9 +7,4 @@ db = mysql.connector.connect(
     database="travel_db"
 )
 
-mycursor = db.cursor()
-
-db.commit()
-db.close()
-
-print("Connection successful!")
+cursor = db.cursor()
