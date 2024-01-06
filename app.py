@@ -63,6 +63,8 @@ questions = [
     # update trip
     # update expense
     # add another file to handle queries
+    # show expenses from specific trip
+    # show expenses in specific category
 ]
 
 user_answer = inquirer.prompt(questions)
