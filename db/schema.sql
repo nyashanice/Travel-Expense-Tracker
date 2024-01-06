@@ -11,6 +11,7 @@ USE travel_db;
 CREATE TABLE trips (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     destination VARCHAR(100) NOT NULL,
+    description VARCHAR(1000),
     start_date DATE NOT NULL,
     end_date DATE NOT NULL
 );
