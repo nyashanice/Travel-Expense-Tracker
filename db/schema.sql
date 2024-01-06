@@ -25,7 +25,7 @@ CREATE TABLE categories (
 CREATE TABLE expenses (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     amount DECIMAL(6,2) NOT NULL,
-    description TEXT,
+    note TEXT,
     date DATE NOT NULL,
     -- references id in categories table
     category_id INT,
