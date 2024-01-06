@@ -19,7 +19,7 @@ CREATE TABLE trips (
 CREATE TABLE categories (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    description VARCHAR(1000)
+    description TEXT
 );
 
 CREATE TABLE expenses (

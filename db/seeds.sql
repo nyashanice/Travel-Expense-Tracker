@@ -6,17 +6,17 @@ VALUES ("Aruba","birthday trip",'2023-04-01','2023-04-08'),
 
 
 INSERT INTO categories (name, description)
-VALUES ("Transportation","flight, train, bus, rideshare/taxi, gas, rental car")
-       ("Accommodationn","hotel, AirBnb, hostel, vacation rental")
-       ("Meals","restaurants, cafes, fast food, groceries")
-       ("Entertainment","event tickets, tours, attractions")
-       ("Communication","SIM card, phone plan")
-       ("Business","conference fees, business meals")
-       ("Currency Exchange/ATM Fees","fees related to currency exchange or ATM withdrawl")
-       ("Emergencies","medical expenses, unforseen expenses")
-       ("Miscellaneous","travel insurance, tips/gratuities, souvenirs, laundry")
+VALUES ("Transportation","flight, train, bus, rideshare/taxi, gas, rental car"),
+       ("Accommodationn","hotel, AirBnb, hostel, vacation rental"),
+       ("Meals","restaurants, cafes, fast food, groceries"),
+       ("Entertainment","event tickets, tours, attractions"),
+       ("Communication","SIM card, phone plan"),
+       ("Business","conference fees, business meals"),
+       ("Currency Exchange/ATM Fees","fees related to currency exchange or ATM withdrawl"),
+       ("Emergencies","medical expenses, unforseen expenses"),
+       ("Miscellaneous","travel insurance, tips/gratuities, souvenirs, laundry"),
 
 
 INSERT INTO expenses (amount, note, date, category_id, trip_id)
-VALUES (843, "Delta flight", '2023-04-01',1,1)
+VALUES (843, "Delta flight", '2023-04-01',1,1),
        (34.19, "room service", '2023-08-11',3,2)
