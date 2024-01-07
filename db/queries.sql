@@ -15,6 +15,8 @@ INSERT INTO trips (destination, description, start_date, end_date) VALUES (%s, %
 
 -- add expense
 
+
 -- update trip
+
 
 -- update expense
