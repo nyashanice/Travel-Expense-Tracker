@@ -1,13 +1,13 @@
-import config as db
+import config.connection as db
 from questions import questions
 import inquirer
 
 
 def viewTrips():
-    # sql = "SELECT * FROM trips"
-    # cursor.execute(sql)
-    # chooseOption
-    print("hiii")
+    sql = "SELECT * FROM trips"
+    db.cursor.execute(sql)
+    trips = db.cursor.fetchall()
+    print(trips)
     chooseOption()
 
 def viewCategories():
