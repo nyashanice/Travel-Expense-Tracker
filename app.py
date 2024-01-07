@@ -1,23 +1,35 @@
 import config as db
-import questions
+from questions import questions
 import inquirer
 
-cursor = db.cursor()
 
 def viewTrips():
-    sql = "SELECT * FROM trips"
-    cursor.execute(sql)
-    chooseOption
+    # sql = "SELECT * FROM trips"
+    # cursor.execute(sql)
+    # chooseOption
+    print("hiii")
+    chooseOption()
+
+def viewCategories():
+    print("hi")
+    chooseOption()
+
+def addTrip():
+    print("hello")
+    chooseOption()
 
 
-async def chooseOption():
-    userAnswer = await inquirer.prompt(questions.menu)
-    print(userAnswer)
+def chooseOption():
+    userAnswer = inquirer.prompt(questions['Main_Q'])
     if userAnswer["main"] == "View all trips":
-        viewTrips
+        viewTrips()
     elif userAnswer["main"] == "View all categories":
-        ViewCategories
+        viewCategories()
     elif userAnswer["main"] == "Add a trip":
-        addTrip
+        addTrip()
     else:
         quit()
+
+
+chooseOption()
+

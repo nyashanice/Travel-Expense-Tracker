@@ -7,3 +7,4 @@ db = mysql.connector.connect(
     database="travel_db"
 )
 
+cursor = db.cursor()

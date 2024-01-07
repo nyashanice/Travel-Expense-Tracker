@@ -2,7 +2,6 @@ import config as db
 import inquirer
 
 
-cursor = db.cursor()
 
 def addTrip(data):
     return [
@@ -46,41 +45,41 @@ def addExpense(data):
     ),
     ]
 
-menu = {
+questions = {
     'Main_Q': [
-    inquirer.List(
-        "main",
-        message="What would you like to do?",
-        choices=["View all trips","View all categories","Add a trip", "Exit"],
-    ),
+        inquirer.List(
+            "main",
+            message="What would you like to do?",
+            choices=["View all trips", "View all categories", "Add a trip", "Exit"],
+        ),
     ],
     'ViewTrips': [
         inquirer.List(
             "all_trips",
             message="What would you like to do?",
-            choices=["Select a trip","Remove a trip", "Back to main menu"]
-        )
+            choices=["Select a trip", "Remove a trip", "Back to main menu"]
+        ),
     ],
-      'SingleTrip': [
+    'SingleTrip': [
         inquirer.List(
             "single_trip",
             message="What would you like to do?",
-            choices=["Update trip","Add an expense","Update an expense", "Back to main menu"]
-        )
+            choices=["Update trip", "Add an expense", "Update an expense", "Back to main menu"]
+        ),
     ],
-      'ViewCategories': [
+    'ViewCategories': [
         inquirer.List(
             "all_categories",
             message="What would you like to do?",
-            choices=["Select a category","Back to main menu"]
-        )
+            choices=["Select a category", "Back to main menu"]
+        ),
     ],
-        'SingleCategory': [
+    'SingleCategory': [
         inquirer.List(
             "single_category",
             message="What would you like to do?",
-            choices=["Back to previous screen","Back to main menu"]
-        )
+            choices=["Back to previous screen", "Back to main menu"]
+        ),
     ],
     # when user selects 'add a trip'
     'AddTrip': addTrip,
@@ -92,6 +91,5 @@ menu = {
     # add another file to handle queries
     # show expenses from specific trip
     # show expenses in specific category
+
 }
-
-
