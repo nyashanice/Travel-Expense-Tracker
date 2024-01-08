@@ -10,12 +10,18 @@ def viewTrips():
     # use pandas to format as table?
     for trip in trips:
         print(trip)
+
+    tripDataQuery = "SELECT destination FROM trips"
+    db.cursor.execute(tripDataQuery)
+    tripData = db.cursor.fetchall()
+    print(tripData)
     
+    # new prompt to ask user what they would like to do with the information given
     userAnswer = inquirer.prompt(questions['ViewTrips'])
-    if userAnswer["all_trips"] == "Select a trip":
-        selectOneTrip()
-    elif userAnswer["all_trips"] == "Remove a trip":
-        removeTrip()
+    if userAnswer["all_trips"] == "Remove a trip":
+        removeTrip(tripData)
+    elif userAnswer["all_trips"] == "Add an expense":
+        addExpense(tripData)
     else:
         chooseOption()
 
@@ -27,12 +33,13 @@ def addTrip():
     print("hello")
     chooseOption()
 
-def selectOneTrip():
-    print('yooo')
+def removeTrip(data):
+    print("bye")
     chooseOption()
 
-def removeTrip():
-    print("bye")
+def addExpense(data):
+    userAnswer = inquirer.prompt(questions['AddExpense'](data))
+    print(userAnswer)
     chooseOption()
 
 def chooseOption():

@@ -25,7 +25,12 @@ def addTrip(data):
 
 def addExpense(data): 
     return [
-         inquirer.Text(
+    inquirer.List (
+         "expense_trip",
+         message="Please choose a trip",
+         choices=data
+    ),
+    inquirer.Text(
         "expense_amnt",
         message="How much was your expense? (numbers only)"
     ),
@@ -45,6 +50,20 @@ def addExpense(data):
     ),
     ]
 
+def singleTrip(data): 
+        return [
+        inquirer.List(
+             "select_trip",
+             message="Please select a trip",
+             choices=data
+        ),
+        inquirer.List(
+            "single_trip",
+            message="What would you like to do?",
+            choices=["Update trip", "Add an expense", "Update an expense", "Back to main menu"]
+        ),
+    ]
+
 questions = {
     'Main_Q': [
         inquirer.List(
@@ -57,21 +76,14 @@ questions = {
         inquirer.List(
             "all_trips",
             message="What would you like to do?",
-            choices=["Select a trip", "Remove a trip", "Back to main menu"]
-        ),
-    ],
-    'SingleTrip': [
-        inquirer.List(
-            "single_trip",
-            message="What would you like to do?",
-            choices=["Update trip", "Add an expense", "Update an expense", "Back to main menu"]
+            choices=["Remove a trip", "Add an expense", "Back to main menu"]
         ),
     ],
     'ViewCategories': [
         inquirer.List(
             "all_categories",
             message="What would you like to do?",
-            choices=["Select a category", "Back to main menu"]
+            choices=["View expenses", "Back to main menu"]
         ),
     ],
     'SingleCategory': [
@@ -81,12 +93,12 @@ questions = {
             choices=["Back to previous screen", "Back to main menu"]
         ),
     ],
+    'SingleTrip': singleTrip,
     # when user selects 'add a trip'
     'AddTrip': addTrip,
     # when user selects 'add an expense'
     'AddExpense': addExpense
 
-    # update trip
     # update expense
     # add another file to handle queries
     # show expenses from specific trip
