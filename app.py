@@ -63,7 +63,14 @@ def addTrip():
     chooseOption()
 
 def removeTrip(data):
-    print("bye")
+    userAnswer = inquirer.prompt(questions['RemoveTrip'](data))
+
+    sql = "DELETE FROM trips WHERE destination=%s"
+    userDelete = userAnswer['remove_trip']
+
+    db.cursor.execute(sql, userDelete)
+    db.db.commit()
+    print("Trip removed")
     chooseOption()
 
 def addExpense(data):

@@ -56,6 +56,15 @@ def singleTrip(data):
         ),
     ]
 
+def removeTrip(data):
+      return[
+            inquirer.List(
+                  "remove_trip",
+                  message="Select a trip to remove",
+                  choices=data
+            )
+      ]
+
 questions = {
     'Main_Q': [
         inquirer.List(
@@ -101,7 +110,8 @@ questions = {
     # when user selects 'add an expense'
     'AddExpense': addExpense,
     'SingleTrip': singleTrip,
-    'SingleCategory': singleCategory
+    'SingleCategory': singleCategory,
+    'RemoveTrip': removeTrip
 
     # update expense
     # add another file to handle queries
