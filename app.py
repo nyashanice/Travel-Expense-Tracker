@@ -2,7 +2,7 @@ import config.connection as db
 from questions import questions
 import inquirer
 
-
+# completed
 def viewTrips():
     sql = "SELECT * FROM trips"
     db.cursor.execute(sql)
@@ -25,6 +25,7 @@ def viewTrips():
     else:
         chooseOption()
 
+# completed
 def viewCategories():
     sql = "SELECT * FROM categories"
     db.cursor.execute(sql)
@@ -45,12 +46,7 @@ def viewCategories():
     else:
         chooseOption()
 
-def viewExpenses(data):
-    print(data)
-    userAnswer = inquirer.prompt(questions['SingleCategory'](data))
-    print(userAnswer)
-    chooseOption()
-
+# completed
 def addTrip():
     userAnswer = inquirer.prompt(questions['AddTrip'])
 
@@ -62,6 +58,7 @@ def addTrip():
     print("Added " + userAnswer['trip_destination'] + " trip to the database")
     chooseOption()
 
+# completed
 def removeTrip(data):
     userAnswer = inquirer.prompt(questions['RemoveTrip'](data))
 
@@ -73,6 +70,14 @@ def removeTrip(data):
     print("Trip removed")
     chooseOption()
 
+# error message
+def viewExpenses(data):
+    print(data)
+    userAnswer = inquirer.prompt(questions['SingleCategory'](data))
+    print(userAnswer)
+    chooseOption()
+
+# error message
 def addExpense(data):
     userAnswer = inquirer.prompt(questions['AddExpense'](data))
     print(userAnswer)
@@ -91,4 +96,3 @@ def chooseOption():
 
 
 chooseOption()
-

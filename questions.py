@@ -1,6 +1,7 @@
 import config as db
 import inquirer
 
+# error message - not populating
 def singleCategory(data):
       return [
         inquirer.List(
@@ -15,6 +16,7 @@ def singleCategory(data):
         ), 
       ],
 
+# populating but error message
 def addExpense(data): 
     return [
     inquirer.List (
@@ -42,6 +44,8 @@ def addExpense(data):
     ),
     ]
 
+# haven't started
+# just add update trip option to view trips function
 def singleTrip(data): 
         return [
         inquirer.List(
@@ -56,6 +60,7 @@ def singleTrip(data):
         ),
     ]
 
+# completed
 def removeTrip(data):
       return[
             inquirer.List(
@@ -66,6 +71,7 @@ def removeTrip(data):
       ]
 
 questions = {
+    #   completed
     'Main_Q': [
         inquirer.List(
             "main",
@@ -73,6 +79,7 @@ questions = {
             choices=["View all trips", "View all categories", "Add a trip", "Exit"],
         ),
     ],
+    # completed
     'ViewTrips': [
         inquirer.List(
             "all_trips",
@@ -80,6 +87,7 @@ questions = {
             choices=["Remove a trip", "Add an expense", "Back to main menu"]
         ),
     ],
+    # completed
     'ViewCategories': [
         inquirer.List(
             "all_categories",
@@ -89,6 +97,7 @@ questions = {
     ],
 
     # when user selects 'add a trip'
+    # completed
     'AddTrip': [
     inquirer.Text(
         "trip_destination",
@@ -108,9 +117,16 @@ questions = {
     ),
     ],
     # when user selects 'add an expense'
+    # error message
     'AddExpense': addExpense,
+
+    # haven't started
     'SingleTrip': singleTrip,
+
+    # error message
     'SingleCategory': singleCategory,
+
+    # completed
     'RemoveTrip': removeTrip
 
     # update expense
