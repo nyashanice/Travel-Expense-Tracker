@@ -7,7 +7,7 @@ VALUES ("Aruba","birthday trip",'2023-04-01','2023-04-08'),
 
 INSERT INTO categories (name, description)
 VALUES ("Transportation","flight, train, bus, rideshare/taxi, gas, rental car"),
-       ("Accommodationn","hotel, AirBnb, hostel, vacation rental"),
+       ("Accommodation","hotel, AirBnb, hostel, vacation rental"),
        ("Meals","restaurants, cafes, fast food, groceries"),
        ("Entertainment","event tickets, tours, attractions"),
        ("Communication","SIM card, phone plan"),

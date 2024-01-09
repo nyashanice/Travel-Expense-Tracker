@@ -1,34 +1,26 @@
 import config as db
 import inquirer
 
-
-
-# def addTrip():
-#      [
-#     inquirer.Text(
-#         "trip_destination",
-#         message="Where was your trip to?",
-#     ),
-#     inquirer.Text(
-#         "trip_description",
-#         message="What was the purpose of the trip?"
-#     ),
-#     inquirer.Text(
-#         "trip_start",
-#         message="What date did your trip start? YYYY/MM/DD"
-#     ),
-#     inquirer.Text(
-#         "trip_end",
-#         message="What date did your trip end? YYYY/MM/DD"
-#     ),
-#     ]
+def singleCategory(data):
+      return [
+        inquirer.List(
+          "choose_category",
+          message="Please choose a category",
+          choices=data    
+        ),
+        inquirer.List(
+            "single_category",
+            message="What would you like to do?",
+            choices=["Back to previous screen", "Back to main menu"]
+        ), 
+      ],
 
 def addExpense(data): 
     return [
     inquirer.List (
-         "expense_trip",
-         message="Please choose a trip",
-         choices=data
+        "expense_trip",
+        message="Please choose a trip",
+        choices=data
     ),
     inquirer.Text(
         "expense_amnt",
@@ -86,14 +78,7 @@ questions = {
             choices=["View expenses", "Back to main menu"]
         ),
     ],
-    'SingleCategory': [
-        inquirer.List(
-            "single_category",
-            message="What would you like to do?",
-            choices=["Back to previous screen", "Back to main menu"]
-        ),
-    ],
-    'SingleTrip': singleTrip,
+
     # when user selects 'add a trip'
     'AddTrip': [
     inquirer.Text(
@@ -114,7 +99,9 @@ questions = {
     ),
     ],
     # when user selects 'add an expense'
-    'AddExpense': addExpense
+    'AddExpense': addExpense,
+    'SingleTrip': singleTrip,
+    'SingleCategory': singleCategory
 
     # update expense
     # add another file to handle queries
