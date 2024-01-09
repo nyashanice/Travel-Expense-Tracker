@@ -3,25 +3,25 @@ import inquirer
 
 
 
-def addTrip(data):
-    return [
-        inquirer.Text(
-        "trip_destination",
-        message="Where was your trip to?",
-    ),
-    inquirer.Text(
-        "trip_description",
-        message="What was the purpose of the trip?"
-    ),
-    inquirer.Text(
-        "trip_start",
-        message="What date did your trip start? YYYY/MM/DD"
-    ),
-    inquirer.Text(
-        "trip_end",
-        message="What date did your trip end? YYYY/MM/DD"
-    ),
-    ]
+# def addTrip():
+#      [
+#     inquirer.Text(
+#         "trip_destination",
+#         message="Where was your trip to?",
+#     ),
+#     inquirer.Text(
+#         "trip_description",
+#         message="What was the purpose of the trip?"
+#     ),
+#     inquirer.Text(
+#         "trip_start",
+#         message="What date did your trip start? YYYY/MM/DD"
+#     ),
+#     inquirer.Text(
+#         "trip_end",
+#         message="What date did your trip end? YYYY/MM/DD"
+#     ),
+#     ]
 
 def addExpense(data): 
     return [
@@ -95,7 +95,24 @@ questions = {
     ],
     'SingleTrip': singleTrip,
     # when user selects 'add a trip'
-    'AddTrip': addTrip,
+    'AddTrip': [
+    inquirer.Text(
+        "trip_destination",
+        message="Where was your trip to?",
+    ),
+    inquirer.Text(
+        "trip_description",
+        message="What was the purpose of the trip?"
+    ),
+    inquirer.Text(
+        "trip_start",
+        message="What date did your trip start? YYYY/MM/DD"
+    ),
+    inquirer.Text(
+        "trip_end",
+        message="What date did your trip end? YYYY/MM/DD"
+    ),
+    ],
     # when user selects 'add an expense'
     'AddExpense': addExpense
 

@@ -30,7 +30,15 @@ def viewCategories():
     chooseOption()
 
 def addTrip():
-    print("hello")
+    userAnswer = inquirer.prompt(questions['AddTrip'])
+    print(userAnswer['trip_destination'])
+
+    addTripQuery = "INSERT INTO trips (destination, description, start_date, end_date) VALUES (%s,%s,%s,%s)"
+    tripValues = [userAnswer['trip_destination'], userAnswer['trip_description'], userAnswer['trip_start'], userAnswer['trip_end']]
+
+    db.cursor.execute(addTripQuery, tripValues)
+    db.commit()
+    print("Added " + userAnswer['trip_destination'] + " trip to the database")
     chooseOption()
 
 def removeTrip(data):
