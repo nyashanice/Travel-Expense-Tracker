@@ -14,7 +14,7 @@ VALUES ("Transportation","flight, train, bus, rideshare/taxi, gas, rental car"),
        ("Business","conference fees, business meals"),
        ("Currency Exchange/ATM Fees","fees related to currency exchange or ATM withdrawl"),
        ("Emergencies","medical expenses, unforseen expenses"),
-       ("Miscellaneous","travel insurance, tips/gratuities, souvenirs, laundry"),
+       ("Miscellaneous","travel insurance, tips/gratuities, souvenirs, laundry")
 
 
 INSERT INTO expenses (amount, note, date, category_id, trip_id)

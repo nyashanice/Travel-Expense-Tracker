@@ -1,8 +1,3 @@
--- create database and seed data
--- table for destination info (location, season, start and end date)
--- table for expenses data (food and drinks, excursions, transportation, lodging, nightlife, gifts, trip preparation like clothing, hair, nails, etc.)
--- same trip id for both tables to access info for specific trip? ont to one relationship
-
 DROP DATABASE IF EXISTS travel_db;
 CREATE DATABASE travel_db;
 
