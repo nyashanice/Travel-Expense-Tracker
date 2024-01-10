@@ -1,4 +1,3 @@
-import config as db
 import inquirer
 
 # completed
@@ -8,13 +7,9 @@ def singleCategory(data):
           "choose_category",
           message="Please choose a category",
           choices=data    
-        ),
-        # inquirer.List(
-        #     "single_category",
-        #     message="What would you like to do?",
-        #     choices=["Back to previous screen", "Back to main menu"]
-        # ), 
+        )
       ]
+
 
 def singleTrip(data):
       return [
@@ -22,15 +17,16 @@ def singleTrip(data):
           "choose_trip",
           message="Please choose a trip",
           choices=data    
-        ),
+        )
       ]
 
-# completed
+
 def addExpense(tripData, categoryData): 
     return [
     inquirer.List (
         "expense_trip",
         message="Please choose a trip",
+        # populate trips here (destinations only)
         choices=tripData
     ),
     inquirer.Text(
@@ -53,38 +49,24 @@ def addExpense(tripData, categoryData):
     ),
     ]
 
-# haven't started
-# just add update trip option to view trips function
-# view expenses
-# def singleTrip(data): 
-#         return [
-#         inquirer.List(
-#              "select_trip",
-#              message="Please select a trip",
-#              choices=data
-#         ),
-#         inquirer.List(
-#             "single_trip",
-#             message="What would you like to do?",
-#             choices=["Update trip", "Add an expense", "Update an expense", "Back to main menu"]
-#         ),
-#     ]
 
-# completed
 def removeTrip(data):
       return[
             inquirer.List(
                   "remove_trip",
                   message="Select a trip to remove",
+                  # populate trips here (destinations only)
                   choices=data
             )
       ]
+
 
 def updateTrip(data):
       return[
         inquirer.List(
           "choose_trip",
           message="Please choose a trip",
+          # populate trips here (destinations only)
           choices=data    
         ),
         inquirer.Text(
@@ -94,7 +76,6 @@ def updateTrip(data):
       ]
 
 questions = {
-    #   completed
     'Main_Q': [
         inquirer.List(
             "main",
@@ -102,7 +83,7 @@ questions = {
             choices=["View all trips", "View all categories", "Add a trip", "Exit"],
         ),
     ],
-    # completed
+
     'ViewTrips': [
         inquirer.List(
             "all_trips",
@@ -110,7 +91,7 @@ questions = {
             choices=["Remove a trip", "Add an expense","View expenses", "Update trip", "Back to main menu"]
         ),
     ],
-    # completed
+
     'ViewCategories': [
         inquirer.List(
             "all_categories",
@@ -119,8 +100,6 @@ questions = {
         ),
     ],
 
-    # when user selects 'add a trip'
-    # completed
     'AddTrip': [
     inquirer.Text(
         "trip_destination",
@@ -139,22 +118,14 @@ questions = {
         message="What date did your trip end? YYYY/MM/DD"
     ),
     ],
-    # when user selects 'add an expense'
-    # completed
+
     'AddExpense': addExpense,
 
-    # haven't started
     'SingleTrip': singleTrip,
 
-    # error message
     'SingleCategory': singleCategory,
 
-    # completed
     'RemoveTrip': removeTrip,
 
     'UpdateTrip': updateTrip
-
-
- 
-
 }
