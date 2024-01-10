@@ -11,11 +11,11 @@ def viewTrips():
     for trip in trips:
         print(trip)
 
-    tripDataQuery = "SELECT destination FROM trips"
+    tripDataQuery = "SELECT destination, id AS value FROM trips"
     db.cursor.execute(tripDataQuery)
     tripData = db.cursor.fetchall()
 
-    categoryDataQuery = "SELECT name FROM categories"
+    categoryDataQuery = "SELECT name, id AS value FROM categories"
     db.cursor.execute(categoryDataQuery)
     categoryData = db.cursor.fetchall()
     
@@ -88,10 +88,11 @@ def viewExpenses(data):
 
 # completed
 def addExpense(tripData, categoryData):
-    inquirer.prompt(questions['AddExpense'](tripData, categoryData))
+    userAnswer = inquirer.prompt(questions['AddExpense'](tripData, categoryData))
 
-    sql = "INSERT INTO expenses VALUES (%s,%s,%s,%s,%s)"
-    db.cursor.execute(sql)
+    sql = "INSERT INTO expenses (trip_id, amount, note, date, category_id) VALUES (%s,%s,%s,%s,%s)"
+    expenseValues = [userAnswer['expense_trip'], userAnswer['expense_amnt'], userAnswer['expense_note'], userAnswer['expense_date'],userAnswer['expense_category']]
+    db.cursor.execute(sql, expenseValues)
     db.db.commit()
     print("Expense added!")
     chooseOption()
