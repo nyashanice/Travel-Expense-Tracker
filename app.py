@@ -113,8 +113,8 @@ def viewCategoryExpenses(data):
 def removeTrip(data):
     userAnswer = inquirer.prompt(questions['RemoveTrip'](data))
 
-    sql = "DELETE FROM trips WHERE destination=%s"
-    userDelete = userAnswer['remove_trip']
+    sql = "DELETE FROM trips WHERE id=%s"
+    userDelete = [userAnswer['remove_trip']]
 
     db.cursor.execute(sql, userDelete)
     db.db.commit()
