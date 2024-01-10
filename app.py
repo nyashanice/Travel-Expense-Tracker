@@ -1,15 +1,13 @@
 import config.connection as db
 from questions import questions
 import inquirer
+from prettytable import from_db_cursor
 
 # view a table of all trips in database
 def viewTrips():
     sql = "SELECT * FROM trips"
     db.cursor.execute(sql)
-    trips = db.cursor.fetchall()
-    # use pandas to format as table?
-    for trip in trips:
-        print(trip)
+    print(from_db_cursor(db.cursor))
 
     # gathers the id and destination of all trips to be used in inquirer list 
     # to choose a single trip to update, remove, or view expenses or to add a new expense
@@ -40,10 +38,7 @@ def viewTrips():
 def viewCategories():
     sql = "SELECT * FROM categories"
     db.cursor.execute(sql)
-    categories = db.cursor.fetchall()
-    # use pandas to format as table?
-    for category in categories:
-        print(category)
+    print(from_db_cursor(db.cursor))
 
     # gathers id and name of all categories to be used in inquirer list to 
     # view expenses in a single category
@@ -97,24 +92,20 @@ def viewTripExpenses(data):
     sql = "SELECT e.amount, e.note, e.date, c.name AS category FROM expenses e LEFT JOIN categories c ON e.category_id = c.id WHERE e.trip_id=%s"
     tripSelect = [userAnswer['choose_trip']]
     db.cursor.execute(sql, tripSelect)
-    expenses = db.cursor.fetchall()
-    for expense in expenses:
-        print(expense)
+    print(from_db_cursor(db.cursor))
 
     chooseOption()
 
 
 # view expenses from a single category
 def viewCategoryExpenses(data):
-    userAnswer = inquirer.prompt(questions['SingleCategory'](data)[0])
+    userAnswer = inquirer.prompt(questions['SingleCategory'](data))
 
     # shows expenses and the trip they belong to in a table format
     sql = "SELECT e.id, e.amount, e.note, e.date, t.destination AS trip FROM expenses e LEFT JOIN trips t ON e.trip_id = t.id WHERE e.category_id=%s "
     categorySelect = [userAnswer['choose_category']]
     db.cursor.execute(sql, categorySelect)
-    expenses = db.cursor.fetchall()
-    for expense in expenses:
-        print(expense)
+    print(from_db_cursor(db.cursor))
 
     chooseOption()
 

@@ -21,4 +21,3 @@ INSERT INTO expenses (trip_id, amount, note, date, category_id) VALUES (%s,%s,%s
 
 -- update trip
 UPDATE trips SET end_date=%s WHERE id=%s
-
