@@ -9,14 +9,14 @@ def singleCategory(data):
           message="Please choose a category",
           choices=data    
         ),
-        inquirer.List(
-            "single_category",
-            message="What would you like to do?",
-            choices=["Back to previous screen", "Back to main menu"]
-        ), 
+        # inquirer.List(
+        #     "single_category",
+        #     message="What would you like to do?",
+        #     choices=["Back to previous screen", "Back to main menu"]
+        # ), 
       ],
 
-# populating but error message
+# completed
 def addExpense(tripData, categoryData): 
     return [
     inquirer.List (
@@ -46,6 +46,7 @@ def addExpense(tripData, categoryData):
 
 # haven't started
 # just add update trip option to view trips function
+# view expenses
 def singleTrip(data): 
         return [
         inquirer.List(
@@ -117,7 +118,7 @@ questions = {
     ),
     ],
     # when user selects 'add an expense'
-    # error message
+    # completed
     'AddExpense': addExpense,
 
     # haven't started

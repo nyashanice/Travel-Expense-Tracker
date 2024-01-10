@@ -37,7 +37,7 @@ def viewCategories():
     for category in categories:
         print(category)
 
-    categoryDataQuery = "SELECT name FROM categories"
+    categoryDataQuery = "SELECT name, id AS value FROM categories"
     db.cursor.execute(categoryDataQuery)
     categoryData = db.cursor.fetchall()
     print(categoryData)
@@ -75,14 +75,27 @@ def removeTrip(data):
 
 # error message
 def viewExpenses(data):
+    print(type(data))
     print(data)
-    userAnswer = inquirer.prompt(questions['SingleCategory'](data))
+    userAnswer = inquirer.prompt(questions['SingleCategory'](data)[0])
     print(userAnswer)
+
+    sql = "SELECT * FROM expenses WHERE category_id=3"
+    categorySelect = userAnswer['choose_category']
+    db.cursor.execute(sql)
+    expenses = db.cursor.fetchall()
+    for expense in expenses:
+        print(expense)
+
     chooseOption()
 
-# error message
+# completed
 def addExpense(tripData, categoryData):
-    userAnswer = inquirer.prompt(questions['AddExpense'](tripData, categoryData))
+    inquirer.prompt(questions['AddExpense'](tripData, categoryData))
+
+    sql = "INSERT INTO expenses VALUES (%s,%s,%s,%s,%s)"
+    db.cursor.execute(sql)
+    db.db.commit()
     print("Expense added!")
     chooseOption()
 
