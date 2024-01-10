@@ -45,7 +45,6 @@ def viewCategories():
     categoryDataQuery = "SELECT name, id AS value FROM categories"
     db.cursor.execute(categoryDataQuery)
     categoryData = db.cursor.fetchall()
-    print(categoryData)
     
     # new prompt to ask user what they would like to do with the information given
     userAnswer = inquirer.prompt(questions['ViewCategories'])
