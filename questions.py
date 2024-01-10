@@ -14,7 +14,16 @@ def singleCategory(data):
         #     message="What would you like to do?",
         #     choices=["Back to previous screen", "Back to main menu"]
         # ), 
-      ],
+      ]
+
+def singleTrip(data):
+      return [
+        inquirer.List(
+          "choose_trip",
+          message="Please choose a trip",
+          choices=data    
+        ),
+      ]
 
 # completed
 def addExpense(tripData, categoryData): 
@@ -47,19 +56,19 @@ def addExpense(tripData, categoryData):
 # haven't started
 # just add update trip option to view trips function
 # view expenses
-def singleTrip(data): 
-        return [
-        inquirer.List(
-             "select_trip",
-             message="Please select a trip",
-             choices=data
-        ),
-        inquirer.List(
-            "single_trip",
-            message="What would you like to do?",
-            choices=["Update trip", "Add an expense", "Update an expense", "Back to main menu"]
-        ),
-    ]
+# def singleTrip(data): 
+#         return [
+#         inquirer.List(
+#              "select_trip",
+#              message="Please select a trip",
+#              choices=data
+#         ),
+#         inquirer.List(
+#             "single_trip",
+#             message="What would you like to do?",
+#             choices=["Update trip", "Add an expense", "Update an expense", "Back to main menu"]
+#         ),
+#     ]
 
 # completed
 def removeTrip(data):
@@ -69,6 +78,19 @@ def removeTrip(data):
                   message="Select a trip to remove",
                   choices=data
             )
+      ]
+
+def updateTrip(data):
+      return[
+        inquirer.List(
+          "choose_trip",
+          message="Please choose a trip",
+          choices=data    
+        ),
+        inquirer.Text(
+        "trip_new_end",
+        message="What is the new end date? YYYY/MM/DD"
+    ),
       ]
 
 questions = {
@@ -85,7 +107,7 @@ questions = {
         inquirer.List(
             "all_trips",
             message="What would you like to do?",
-            choices=["Remove a trip", "Add an expense", "Back to main menu"]
+            choices=["Remove a trip", "Add an expense","View expenses", "Update trip", "Back to main menu"]
         ),
     ],
     # completed
@@ -128,9 +150,11 @@ questions = {
     'SingleCategory': singleCategory,
 
     # completed
-    'RemoveTrip': removeTrip
+    'RemoveTrip': removeTrip,
+
+    'UpdateTrip': updateTrip
 
     # add another file to handle queries
-    # show expenses from specific trip
+ 
 
 }

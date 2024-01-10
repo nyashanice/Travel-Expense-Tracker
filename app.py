@@ -25,8 +25,24 @@ def viewTrips():
         removeTrip(tripData)
     elif userAnswer["all_trips"] == "Add an expense":
         addExpense(tripData, categoryData)
+    elif userAnswer["all_trips"] == "View expenses":
+        viewTripExpenses(tripData)
+    elif userAnswer['all_trips'] == "Update trip":
+        updateTrip(tripData)
     else:
         chooseOption()
+
+def updateTrip(data):
+    userAnswer = inquirer.prompt(questions['UpdateTrip'](data))
+    print(userAnswer)
+
+    sql = "UPDATE trips SET end_date=%s WHERE id=%s"
+    userUpdate = [userAnswer['trip_new_end'], userAnswer['choose_trip']]
+    db.cursor.execute(sql, userUpdate)
+    db.db.commit()
+
+    print("Trip updated!")
+    chooseOption()
 
 # completed
 def viewCategories():
@@ -45,7 +61,7 @@ def viewCategories():
     # new prompt to ask user what they would like to do with the information given
     userAnswer = inquirer.prompt(questions['ViewCategories'])
     if userAnswer["all_categories"] == "View expenses":
-        viewExpenses(categoryData)
+        viewCategoryExpenses(categoryData)
     else:
         chooseOption()
 
@@ -73,8 +89,20 @@ def removeTrip(data):
     print("Trip removed")
     chooseOption()
 
+def viewTripExpenses(data):
+    userAnswer = inquirer.prompt(questions['SingleTrip'](data))
+
+    sql = "SELECT e.amount, e.note, e.date, c.name AS category FROM expenses e LEFT JOIN categories c ON e.category_id = c.id WHERE e.trip_id=%s"
+    tripSelect = [userAnswer['choose_trip']]
+    db.cursor.execute(sql, tripSelect)
+    expenses = db.cursor.fetchall()
+    for expense in expenses:
+        print(expense)
+
+    chooseOption()
+
 # completed
-def viewExpenses(data):
+def viewCategoryExpenses(data):
     userAnswer = inquirer.prompt(questions['SingleCategory'](data)[0])
 
     sql = "SELECT e.id, e.amount, e.note, e.date, t.destination AS trip FROM expenses e LEFT JOIN trips t ON e.trip_id = t.id WHERE e.category_id=%s "
@@ -94,6 +122,7 @@ def addExpense(tripData, categoryData):
     expenseValues = [userAnswer['expense_trip'], userAnswer['expense_amnt'], userAnswer['expense_note'], userAnswer['expense_date'],userAnswer['expense_category']]
     db.cursor.execute(sql, expenseValues)
     db.db.commit()
+
     print("Expense added!")
     chooseOption()
 
