@@ -17,12 +17,12 @@ def singleCategory(data):
       ],
 
 # populating but error message
-def addExpense(data): 
+def addExpense(tripData, categoryData): 
     return [
     inquirer.List (
         "expense_trip",
         message="Please choose a trip",
-        choices=data
+        choices=tripData
     ),
     inquirer.Text(
         "expense_amnt",
@@ -40,7 +40,7 @@ def addExpense(data):
         "expense_category",
         message="What category does this expense belong to?",
         # populate categories data here (names only)
-        choices=[]
+        choices=categoryData
     ),
     ]
 
@@ -129,7 +129,6 @@ questions = {
     # completed
     'RemoveTrip': removeTrip
 
-    # update expense
     # add another file to handle queries
     # show expenses from specific trip
     # show expenses in specific category

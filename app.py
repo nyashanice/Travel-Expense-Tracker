@@ -14,14 +14,17 @@ def viewTrips():
     tripDataQuery = "SELECT destination FROM trips"
     db.cursor.execute(tripDataQuery)
     tripData = db.cursor.fetchall()
-    print(tripData)
+
+    categoryDataQuery = "SELECT name FROM categories"
+    db.cursor.execute(categoryDataQuery)
+    categoryData = db.cursor.fetchall()
     
     # new prompt to ask user what they would like to do with the information given
     userAnswer = inquirer.prompt(questions['ViewTrips'])
     if userAnswer["all_trips"] == "Remove a trip":
         removeTrip(tripData)
     elif userAnswer["all_trips"] == "Add an expense":
-        addExpense(tripData)
+        addExpense(tripData, categoryData)
     else:
         chooseOption()
 
@@ -78,9 +81,9 @@ def viewExpenses(data):
     chooseOption()
 
 # error message
-def addExpense(data):
-    userAnswer = inquirer.prompt(questions['AddExpense'](data))
-    print(userAnswer)
+def addExpense(tripData, categoryData):
+    userAnswer = inquirer.prompt(questions['AddExpense'](tripData, categoryData))
+    print("Expense added!")
     chooseOption()
 
 def chooseOption():
