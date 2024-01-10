@@ -1,7 +1,7 @@
 import config as db
 import inquirer
 
-# error message - not populating
+# completed
 def singleCategory(data):
       return [
         inquirer.List(

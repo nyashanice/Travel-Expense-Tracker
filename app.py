@@ -73,16 +73,13 @@ def removeTrip(data):
     print("Trip removed")
     chooseOption()
 
-# error message
+# completed
 def viewExpenses(data):
-    print(type(data))
-    print(data)
     userAnswer = inquirer.prompt(questions['SingleCategory'](data)[0])
-    print(userAnswer)
 
-    sql = "SELECT * FROM expenses WHERE category_id=3"
-    categorySelect = userAnswer['choose_category']
-    db.cursor.execute(sql)
+    sql = "SELECT * FROM expenses WHERE category_id=%s"
+    categorySelect = [userAnswer['choose_category']]
+    db.cursor.execute(sql, categorySelect)
     expenses = db.cursor.fetchall()
     for expense in expenses:
         print(expense)
