@@ -77,7 +77,7 @@ def removeTrip(data):
 def viewExpenses(data):
     userAnswer = inquirer.prompt(questions['SingleCategory'](data)[0])
 
-    sql = "SELECT * FROM expenses WHERE category_id=%s"
+    sql = "SELECT e.id, e.amount, e.note, e.date, t.destination AS trip FROM expenses e LEFT JOIN trips t ON e.trip_id = t.id WHERE e.category_id=%s "
     categorySelect = [userAnswer['choose_category']]
     db.cursor.execute(sql, categorySelect)
     expenses = db.cursor.fetchall()
