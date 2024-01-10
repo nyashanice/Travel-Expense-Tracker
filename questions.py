@@ -154,7 +154,7 @@ questions = {
 
     'UpdateTrip': updateTrip
 
-    # add another file to handle queries
+
  
 
 }
